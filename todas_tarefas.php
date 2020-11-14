@@ -23,7 +23,7 @@
 
 			function editar(id, tarefaTxt) {
 				let form = document.createElement('form');
-				form.action = '#';
+				form.action = 'tarefaController.php?acao=atualizar';
 				form.method = 'post';
 				form.className = 'row';
 
@@ -31,7 +31,7 @@
 				inputTarefa.type = 'text';
 				inputTarefa.name = 'tarefa';
 				inputTarefa.value = tarefaTxt;
-				inputTarefa.className = 'col-8 ml-3 form-control';
+				inputTarefa.className = 'col-8 ml-3 mt-4 form-control';
 
 				let inputId = document.createElement('input');
 				inputId.type = 'hidden';
@@ -40,15 +40,13 @@
 
 				let button = document.createElement('button');
 				button.type = 'submit';
-				button.className = 'col-3 ml-2 btn btn-info';
+				button.className = 'col-3 ml-2 mt-4 btn btn-info';
 				button.innerHTML = 'Atualizar';
 
 				// incluindo inputTarefa, inputId e button no form
 				form.appendChild(inputTarefa);
 				form.appendChild(inputId);
 				form.appendChild(button);
-
-				// console.log(form);
 
 				let tarefa = document.getElementById('tarefa' + id);
 
@@ -58,7 +56,10 @@
 				// incluindo form no lugar do texto anterior
 				tarefa.insertBefore(form, tarefa[0]);
 
+			}
 
+			function remover(id) {
+				location.href = 'todas_tarefas.php?acao=remover&id='+ id;
 			}
 
 		</script>
@@ -89,7 +90,7 @@
 						<div class="row">
 							<div class="col">
 								<h4>Todas tarefas</h4>
-								<hr />
+								<hr>
 
 								<? foreach ($tarefas as $indx => $tarefa) { ?>
 								
@@ -98,7 +99,7 @@
 										 <?= $tarefa->tarefa ?> (<?= $tarefa->status ?>)
 										</div>
 										<div class="col-sm-3 mt-2 d-flex justify-content-between">
-											<i class="fas fa-trash-alt fa-lg text-danger"></i>
+											<i class="fas fa-trash-alt fa-lg text-danger" onclick="remover(<?= $tarefa->id ?>)"></i>
 											<i class="fas fa-edit fa-lg text-info" onclick="editar(<?= $tarefa->id ?>, '<?= $tarefa->tarefa ?>')"></i>
 											<i class="fas fa-check-square fa-lg text-success"></i>
 										</div>
