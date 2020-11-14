@@ -96,7 +96,7 @@
 								<h4>Todas tarefas</h4>
 								<hr>
 
-								<? foreach ($tarefas as $indx => $tarefa) { ?>
+								<?php foreach ($tarefas as $indx => $tarefa) { ?>
 								
 									<div class="row mb-3 d-flex align-items-center tarefa">
 										<div class="col-sm-9" id="tarefa<?= $tarefa->id ?>"> <!-- concatenando com o id da tarefa -->
@@ -105,14 +105,14 @@
 										<div class="col-sm-3 mt-2 d-flex justify-content-between">
 											<i class="fas fa-trash-alt fa-lg text-danger" onclick="remover(<?= $tarefa->id ?>)"></i>
 
-											<? if ($tarefa->status == 'pendente') { ?>
+											<?php if ($tarefa->status == 'pendente') { ?>
 												<i class="fas fa-edit fa-lg text-info" onclick="editar(<?= $tarefa->id ?>, '<?= $tarefa->tarefa ?>')"></i>
 												<i class="fas fa-check-square fa-lg text-success" onclick="tarefaRealizada(<?= $tarefa->id ?>)"></i>
-											<? } ?>
+											<?php } ?>
 										</div>
 									</div>
 
-								<? } ?>
+								<?php } ?>
 								
 							</div>
 						</div>

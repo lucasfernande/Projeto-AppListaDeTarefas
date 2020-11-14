@@ -1,5 +1,5 @@
 <?php  
 	
-	require '../../../AppListaDeTarefas/tarefaController.php';
+	require_once '../../../AppListaDeTarefas/tarefaController.php';
 
 ?>
